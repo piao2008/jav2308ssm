@@ -14,7 +14,11 @@ public class CatController {
 
     public  void test()
     {
-        System.out.println("cat..");
+        System.out.println("cat..123");
+
+        System.out.println("cat1..");
+        System.out.println("cat2..");
+        System.out.println("cat3..");
     }
 }
 
