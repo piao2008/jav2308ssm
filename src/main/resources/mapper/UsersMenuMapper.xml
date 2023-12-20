@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.as.ssm.dao.UsersMenuMapper">
+
+<!--    删除该用户的权限-->
+    <delete id="deleteByEmpid">
+        delete from usersmenu where empid=#{empid}
+    </delete>
+
+<!--    批量添加用户权限-->
+    <insert id="inserts">
+        insert into usersmenu(menuid,empid) values
+        <foreach collection="list" item="menu" separator=",">
+            (#{menu.menuid},#{menu.empid})
+        </foreach>
+    </insert>
+
+<!--    #查询要分配权限的用户当前具有的权限实现默认选中-->
+    <select id="selectByEmpId" resultType="com.as.ssm.domain.UsersMenu">
+        select * from usersmenu where empid=#{empid}
+    </select>
+
+</mapper>

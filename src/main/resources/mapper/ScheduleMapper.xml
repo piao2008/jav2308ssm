@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.as.ssm.dao.ScheduleMapper">
+    <insert id="insert">
+    insert into `schedule`
+    (title,empid,begintime,endtime,content,concatname,address,tel,demo)
+    values(#{title},#{empid},#{begintime},#{endtime},#{content},#{concatname},#{address},#{tel},#{demo});
+    </insert>
+
+    <update id="updateById">
+        update schedule
+        set
+            title=#{title},
+            empid=#{empid},
+            begintime=#{begintime},
+            endtime=#{endtime},
+            content=#{content},
+            concatname=#{concatname},
+            address=#{address},
+            tel=#{tel},
+            demo=#{demo},
+            ifprivate=#{ifprivate},
+            state=#{state}
+        where scheduleid=#{scheduleid}
+    </update>
+
+    <delete id="deleteById">
+        delete from schedule where scheduleid=#{scheduleid}
+    </delete>
+
+    <select id="selectById" resultType="com.as.ssm.domain.Schedule">
+        select * from schedule where scheduleid=#{scheduleid}
+    </select>
+
+    <select id="select" resultType="com.as.ssm.domain.Schedule">
+        select * from viewschedule
+        <include refid="where_sql"></include>
+    </select>
+
+    <sql id="where_sql">
+        <where>
+            and (empid=#{schedule.empid} or ifprivate=2)
+            <if test="schedule.state!=null and schedule.state!=-1">
+                and state=#{schedule.state}
+            </if>
+            <if test="schedule.title!=null and schedule.title!=''">
+                and title like concat('%',#{schedule.title},'%')
+            </if>
+
+            <if test="schedule.begintime!=null and  schedule.begintime!=''">
+                <if test="schedule.end_time!=null and  schedule.end_time!=''">
+                    and begintime>=#{schedule.begintime}
+                    <!--对应转义符&lt;-->
+                    and begintime&lt;=#{schedule.end_time}
+                </if>
+            </if>
+
+        </where>
+    </sql>
+
+    <select id="getRowCount" resultType="int">
+        select count(*) from viewschedule
+        <include refid="where_sql"></include>
+    </select>
+</mapper>

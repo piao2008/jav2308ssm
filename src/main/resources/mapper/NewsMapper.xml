@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.as.ssm.dao.NewsMapper">
+
+    <insert id="insert">
+        insert into news(newstypeid,newstitle,empid,newscontent) values(#{newstypeid},#{newstitle},#{empid},#{newscontent});
+    </insert>
+
+    <update id="updateById">
+        update news set newstypeid=#{newstypeid},newstitle=#{newstitle},newscontent=#{newscontent} where newsid=#{newsid}
+    </update>
+
+    <delete id="deleteById">
+        delete from news where newsid=#{newsid}
+    </delete>
+
+    <delete id="deleteByIds">
+        delete from news where newsid in
+        <foreach collection="array" item="newsid" open="(" close=")" separator=",">
+            #{newsid}
+        </foreach>
+    </delete>
+    <select id="selectById" resultType="com.as.ssm.domain.News">
+        select * from news where newsid=#{newsid}
+    </select>
+
+    <update id="updateState">
+        update news set state=#{st},publishtime=now() where newsid=#{id}
+    </update>
+
+    <select id="select" resultType="com.as.ssm.domain.News">
+        select * from viewNews
+        <include refid="where_sql"></include>
+        order by addtime desc
+        <!--显示新闻前10个-->
+        <if test="skip==-10">
+            limit 10
+        </if>
+        <!--判断是否分页-->
+        <if test="skip>=0">
+
+            limit #{skip},#{take}
+        </if>
+
+    </select>
+
+    <sql id="where_sql">
+        <where>
+            <if test="news.newstitle!=null and news.newstitle!=''">
+                and newstitle like concat('%',#{news.newstitle},'%')
+            </if>
+            <if test="news.newscontent!=null and news.newscontent!=''">
+                and newscontent like concat('%',#{news.newscontent},'%')
+            </if>
+
+            <if test="news.state!=null and news.state!=-1">
+                and state=#{news.state}
+            </if>
+
+            <if test="news.newstypeid!=null and news.newstypeid!=-1">
+                and newstypeid=#{news.newstypeid}
+            </if>
+            <if test="news.empname!=null and news.empname!=''">
+                and empname like  concat('%',#{news.empname},'%')
+            </if>
+
+        </where>
+
+    </sql>
+    <select id="getRowCount" resultType="int">
+        select count(*) from viewNews
+        <include refid="where_sql"></include>
+    </select>
+</mapper>

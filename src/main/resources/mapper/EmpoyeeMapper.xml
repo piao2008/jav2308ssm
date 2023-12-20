@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.as.ssm.dao.EmployeeMapper" >
+
+<insert id="insert">
+insert into employee
+	(
+		empname,
+		gender,
+		password,
+		positionid,
+		loginname,
+		hiredate,
+		departid,
+		mobile,
+		tel,
+		familytel,
+		birthday,
+		address,
+		picture,
+		remark,
+		state
+	)
+	values
+	(
+		#{empname},
+		#{gender},
+		#{password},
+		#{positionid},
+		#{loginname},
+		#{hiredate},
+		#{departid},
+		#{mobile},
+		#{tel},
+		#{familytel},
+		#{birthday},
+		#{address},
+		#{picture},
+		#{remark},
+		#{state}
+	)
+</insert>
+
+
+<update id="updateById">
+	update employee set 
+		empname=#{empname},
+		gender=#{gender},
+		password=#{password},
+		positionid=#{positionid},
+		loginname=#{loginname},
+		hiredate=#{hiredate},
+		departid=#{departid},
+		mobile=#{mobile},
+		tel=#{tel},
+		familytel=#{familytel},
+		birthday=#{birthday},
+		address=#{address},
+		<if test="picture!=null and picture!=''">
+			picture=#{picture},
+		</if>
+		remark=#{remark},
+		state=#{state}
+	where empid=#{empid}
+</update>
+
+<delete id="deleteById">
+	delete from employee where empid=#{empid}
+</delete>
+
+<delete id="deleteByIds">
+	delete from employee where empid in
+	<foreach collection="array" item="empid" open="(" close=")" separator=",">
+		#{empid}
+	</foreach>
+</delete>
+
+
+	<select id="selectById" resultType="com.as.ssm.domain.Employee">
+		select * from employee where empid=#{empid}
+	</select>
+
+	<select id="select" resultType="com.as.ssm.domain.Employee">
+		select a.*,b.departname,c.positionname from employee a,departinfo b,pos c
+		<include refid="where_sql"></include>
+
+		order by addtime desc
+		<if test="skip>=0">
+		limit #{skip},#{take}
+		</if>
+
+	</select>
+
+	<sql id="where_sql">
+		<where>
+			a.departid=b.departid and a.positionid=c.positionid
+			<if test="employee.empname!=null and employee.empname!=''">
+				and a.empname like concat('%',#{employee.empname},'%')
+			</if>
+			<if test="employee.loginname!=null and employee.loginname!=''">
+				and a.loginname like concat('%',#{employee.loginname},'%')
+			</if>
+			<if test="employee.departid!=null and employee.departid!=-1">
+				and a.departid=#{employee.departid}
+			</if>
+
+			<if test="employee.state!=null and employee.state!=-1">
+				and a.state=#{employee.state}
+			</if>
+
+			<if test="employee.positionid!=null and employee.positionid!=-1">
+				and a.positionid=#{employee.positionid}
+			</if>
+
+		</where>
+	</sql>
+
+	<select id="getRowCount" resultType="Integer">
+		select count(*) from employee a,departinfo b,pos c
+		<include refid="where_sql"></include>
+
+	</select>
+
+	<select id="login" resultType="com.as.ssm.domain.Employee">
+		select * from employee where loginname=#{loginname} and password=#{password}
+	</select>
+
+	<select id="login2" resultType="com.as.ssm.domain.Employee">
+		select * from employee where loginname=#{name} and password=#{pwd}
+	</select>
+</mapper>

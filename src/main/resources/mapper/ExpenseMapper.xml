@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.as.ssm.dao.ExpenseMapper">
+
+
+<!--    #1>添加报销主表-->
+<!--    启用自增长,添加成功后,得到自增长值,赋给主键对应的属性expenseid-->
+<!--    useGeneratedKeys="true" 启用自增长 -->
+<!--    keyProperty="expenseid" 自增长对应属性-->
+<!--    keyColumn="expenseid" 自增长对应列-->
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="expenseid" keyColumn="expenseid">
+        insert into expense(empid,total,reason,confirmperson) values(#{empid},#{total},#{reason},#{confirmperson});
+    </insert>
+
+
+    <select id="select" resultMap="map1">
+        select * from  viewexpense
+        <include refid="where_sql"></include>
+                 order by addtime desc
+         <if test="skip>=0">
+            limit #{skip},#{take}
+         </if>
+
+    </select>
+    <resultMap id="map1" type="com.as.ssm.domain.Expense">
+        <id property="expenseid" column="expenseid"/>
+        <result property="addtime" column="addtime"/>
+        <result property="empid" column="empid"/>
+        <result property="total" column="total"/>
+        <result property="reason" column="reason"/>
+        <result property="confirmperson" column="confirmperson"/>
+        <result property="state" column="state"/>
+        <result property="sugstate" column="sugstate"/>
+        <result property="suggestion" column="suggestion"/>
+        <result property="sugtime" column="sugtime"/>
+        <result property="empname" column="empname"/>
+        <result property="departname" column="departname"/>
+        <result property="leadername" column="leadername"/>
+        <collection property="list" ofType="com.as.ssm.domain.ExpenseDetail" column="expenseid" select="com.as.ssm.dao.ExpenseDetailMapper.selectByExpenseId"></collection>
+    </resultMap>
+    <sql id="where_sql">
+        <where>
+            <if test="expense.expenseid!=null and expense.expenseid!=''">
+                and expenseid=#{expense.expenseid}
+            </if>
+            <if test="expense.reason!=null and expense.reason!=''">
+                and reason like concat('%',#{expense.reason},'%')
+            </if>
+
+
+            <if test="expense.begintime!=null and expense.begintime!=''">
+                <if test="expense.endtime!=null and expense.endtime!=''">
+                    and addtime>=concat(#{expense.begintime},' 00:00:00') and addtime&lt;=concat(#{expense.endtime},' 23:59:59')
+                </if>
+            </if>
+
+
+            <if test="expense.beginsugtime!=null and expense.beginsugtime!=''">
+                <if test="expense.endsugtime!=null and expense.endsugtime!=''">
+                    and sugtime>=concat(#{expense.beginsugtime},' 00:00:00') and sugtime&lt;=concat(#{expense.endsugtime},' 23:59:59')
+                </if>
+            </if>
+
+            <if test="expense.state!=null and expense.state!=-1">
+                and state=#{expense.state}
+            </if>
+            <if test="expense.sugstate!=null and expense.sugstate!=-1">
+                and sugstate=#{expense.sugstate}
+            </if>
+            <if test="expense.empid!=null and expense.empid!=-1">
+                and empid=#{expense.empid}
+            </if>
+
+            <if test="expense.confirmperson!=null and expense.confirmperson!=-1">
+                and confirmperson=#{expense.confirmperson}
+            </if>
+
+        </where>
+    </sql>
+
+    <select id="getRowCount" resultType="int">
+        select count(*) from  viewexpense
+        <include refid="where_sql"></include>
+    </select>
+
+    <delete id="deleteById">
+        delete from expense where expenseid=#{expenseid}
+    </delete>
+
+    <update id="updateById">
+        update expense
+            <set>
+                <if test="state!=null">
+                   state=#{state},
+                </if>
+
+                <if test="total!=null">
+                   total=#{total},
+                </if>
+
+                <if test="reason!=null">
+                reason=#{reason},
+                </if>
+
+                <if test="confirmperson!=null">
+                confirmperson=#{confirmperson},
+                </if>
+                <if test="suggestion!=null">
+                    suggestion=#{suggestion},
+                </if>
+                <if test="sugtime!=null">
+                    sugtime=now(),
+                </if>
+
+                <if test="sugstate!=null">
+                    sugstate=#{sugstate},
+                </if>
+            </set>
+            where expenseid=#{expenseid}
+
+
+    </update>
+
+
+</mapper>

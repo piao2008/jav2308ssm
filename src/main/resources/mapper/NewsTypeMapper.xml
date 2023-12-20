@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.as.ssm.dao.NewsTypeMapper">
+
+   <insert id="insert">
+       insert into newstype(newsname,newsdesc) values (#{newsname},#{newsdesc})
+   </insert>
+
+    <update id="updateById">
+        update newstype set newsname=#{newsname},newsdesc=#{newsdesc} where newstypeid=#{newstypeid}
+    </update>
+
+    <delete id="deleteById">
+        delete from newstype where newstypeid=#{newstypeid}
+    </delete>
+
+    <select id="selectById" resultType="com.as.ssm.domain.NewsType">
+        select * from newstype  where newstypeid=#{newstypeid}
+    </select>
+
+    <select id="select"  resultType="com.as.ssm.domain.NewsType">
+        select * from newstype
+        <include refid="where_sql"></include>
+        <if test="skip>=0">
+            limit #{skip},#{take}
+        </if>
+    </select>
+
+    <sql id="where_sql">
+        <where>
+            <if test="newsType.newsname!=null and newsType.newsname!=''">
+                and newsname like #{newsType.newsname}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getRowCount" resultType="int">
+        select count(*) from newstype
+        <include refid="where_sql"></include>
+    </select>
+</mapper>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+   <meta charset="utf-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <!-- Tell the browser to be responsive to screen width -->
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name="description" content="">
+       <meta name="author" content="">
+   
+       <title>顺顺顺顺系统</title>
+       <!-- Custom CSS -->
+		<link rel="stylesheet" type="text/css" href="../assets/libs/quill/dist/quill.snow.css">
+		<link rel="stylesheet" type="text/css" href="../assets/libs/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../dist/bootstrap-icons.css"/>
+		<link rel="stylesheet" type="text/css" href="../dist/css/multicheck.css">
+		<link href="../dist/css/style.min.css" rel="stylesheet">
+       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+       <!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+   <![endif]-->
+   </head>
+   
+   <body>
+
+       <div id="main-wrapper">
+           <!-- ============================================================== -->
+           <!-- Topbar header - style you can find in pages.scss -->
+           <!-- ============================================================== -->
+           <header class="topbar" data-navbarbg="skin5">
+               <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                   <div class="navbar-header" data-logobg="skin5">
+                       <!-- This is for the sidebar toggle which is visible on mobile only -->
+                       <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                       <!-- ============================================================== -->
+                       <!-- Logo -->
+                       <!-- ============================================================== -->
+                       <a class="navbar-brand" href="index.html">
+                           <!-- Logo icon -->
+                           <b class="logo-icon p-l-10">
+                               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                               <!-- Dark Logo icon -->
+                               <img src="../assets/images/asjy.jpg" style="width: 1.875rem;height: 1.4375rem;" alt="homepage" class="light-logo" />
+                              
+                           </b>
+                           <!--End Logo icon -->
+                            <!-- Logo text -->
+                           <span class="logo-text">
+                                <!-- dark Logo text -->
+                                顺风办公自动化系统
+                           </span>
+                           <!-- Logo icon -->
+                           <!--End Logo icon -->
+                       </a>
+                       <!-- ============================================================== -->
+                       <!-- End Logo -->
+                       <!-- ============================================================== -->
+                       <!-- ============================================================== -->
+                       <!-- Toggle which is visible on mobile only -->
+                       <!-- ============================================================== -->
+                       <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
+                   </div>
+                   <!-- ============================================================== -->
+                   <!-- End Logo -->
+                   <!-- ============================================================== -->
+                   <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                       <!-- ============================================================== -->
+                       <!-- toggle and nav items显示或隐藏 -->
+                       <!-- ============================================================== -->
+                       <ul class="navbar-nav float-left mr-auto">
+                           <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
+                       </ul>
+                       <!-- ============================================================== -->
+                       <!-- Right side toggle and nav items -->
+                       <!-- ============================================================== -->
+                       <ul class="navbar-nav float-right">
+                            <!-- ============================================================== -->
+                           <!-- User profile and search -->
+                           <!-- ============================================================== -->
+                           <li class="nav-item dropdown">
+                               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                               <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                                   <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>个人中心</a>
+                                   <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>修改密码</a>
+                                   <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>安全退出</a>
+                                   <div class="dropdown-divider"></div>
+                                   <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i>帐号设置</a>
+                                   <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i>安全退出</a>
+                                   <div class="dropdown-divider"></div>
+                                   
+                               </div>
+                           </li>
+                           <!-- ============================================================== -->
+                           <!-- User profile and search -->
+                           <!-- ============================================================== -->
+                       </ul>
+                   </div>
+               </nav>
+           </header>
+           <!-- ============================================================== -->
+           <!-- End Topbar header -->
+           <!-- ============================================================== -->
+           <!-- ============================================================== -->
+           <!-- Left Sidebar - style you can find in sidebar.scss  -->
+           <!-- ============================================================== -->
+           <aside class="left-sidebar" data-sidebarbg="skin5">
+               <!-- Sidebar scroll-->
+               <div class="scroll-sidebar">
+                   <!-- Sidebar navigation-->
+                   <nav class="sidebar-nav">
+                       <ul id="sidebarnav" class="p-t-30">
+                           <!--用户管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-person-lines-fill"></i><span class="hide-menu">用户管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-file-earmark-richtext"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-file-earmark-richtext"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+                           <!--员工管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-person-square"></i><span class="hide-menu">员工管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-file-earmark-richtext"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-file-earmark-richtext"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+                           <!--部门管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-house-fill"></i><span class="hide-menu">部门管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-diamond-half"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-diamond-half"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+                           <!--新闻管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-newspaper"></i><span class="hide-menu">新闻管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+
+                           <!--通讯录管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-telephone-fill"></i><span class="hide-menu">通讯录管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+                           <!--申请管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi-calendar-check-fill"></i><span class="hide-menu">申请管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+                           <!--消息管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-broadcast-pin"></i><span class="hide-menu">消息管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+                           <!--考勤管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-person-circle"></i><span class="hide-menu">考勤管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+                           <!--文件上传管理-->
+
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-file-earmark-bar-graph-fill"></i><span class="hide-menu">文件管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+
+                           <!--权限管理-->
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-power"></i><span class="hide-menu">权限管理</span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+                                   <li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+                               </ul>
+                           </li>
+
+                           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">系统管理 </span></a>
+                               <ul aria-expanded="false" class="collapse  first-level">
+                                   <li class="sidebar-item"><a href="icon-material.html" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> 权限管理 </span></a></li>
+                                   <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu">安全退出</span></a></li>
+                               </ul>
+                           </li>
+                       </ul>
+                   </nav>
+                   <!-- End Sidebar navigation -->
+               </div>
+               <!-- End Sidebar scroll-->
+           </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+           <div class="page-wrapper">
+               <!-- ============================================================== -->
+               <!-- Bread crumb and right sidebar toggle -->
+               <!-- ============================================================== -->
+               <div class="page-breadcrumb">
+                   <div class="row">
+                       <div class="col-12 d-flex no-block align-items-center">
+                           <h4 class="page-title">文件管理-文件上传</h4>
+                           <div class="ml-auto text-right">
+                               <nav aria-label="breadcrumb">
+                                   <ol class="breadcrumb">
+                                       <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                       <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                   </ol>
+                               </nav>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <!-- ============================================================== -->
+               <!-- End Bread crumb and right sidebar toggle -->
+               <!-- ============================================================== -->
+               <!-- ============================================================== -->
+               <!-- Container fluid  -->
+               <!-- ============================================================== -->
+               <div class="container-fluid">
+                   <!-- ============================================================== -->
+                   <!-- Start Page Content -->
+                   <!-- ============================================================== -->
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="card">
+                               <form class="form-horizontal" method="post" action="fileinfo/append" enctype="multipart/form-data">
+                                   <div class="card-body">
+                                       <!-- <h4 class="card-title">文件上传信息</h4> -->
+                                       <div class="form-group row">
+                                           <label for="fileinfoparentid" class="col-sm-3 text-right control-label col-form-label">文件名称</label>
+                                           <div class="col-sm-4">
+                                               <input type="text" class="form-control" name="filename" placeholder="输入名称">
+                                           </div>
+                                       </div>
+                                       <div class="form-group row">
+                                           <label for="cono1" class="col-sm-3 text-right control-label col-form-label">文件类型</label>
+                                           <div class="col-md-9">
+                                               <div class="custom-control custom-radio float-left">
+                                                   <input type="radio" checked="checked" class="custom-control-input" id="customControlValidation1" name="radio-stacked" required>
+                                                   <label class="custom-control-label" for="customControlValidation1">文本文件</label>
+                                               </div>
+                                               <div class="custom-control custom-radio float-left">
+                                                   <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+                                                   <label class="custom-control-label" for="customControlValidation2">压缩文件</label>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="form-group row">
+                                           <label for="fileinfotitle" class="col-sm-3 text-right control-label col-form-label">上传文件</label>
+                                           <div class="col-sm-4">
+                                               <div class="custom-file">
+                                                   <input type="file" onchange="showFilename(this.files[0])" name="file" class="custom-file-input" id="validatedCustomFile" required>
+                                                   <label id="filename_label" class="custom-file-label" for="validatedCustomFile">选择文件</label>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="form-group row">
+                                           <label for="fileinfotitle" class="col-sm-3 text-right control-label col-form-label">文件介绍</label>
+                                           <div class="col-sm-7">
+                                               <textarea cols="30" rows="5" class="form-control" name="filedesc"  placeholder="输入文件介绍说明..."></textarea>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="border-top">
+                                       <div class="card-body text-center">
+                                           <button type="submit" class="btn btn-success">上传文件</button>
+                                           <button type="submit" class="btn btn-facebook">文件重置</button>
+                                       </div>
+                                   </div>
+                               </form>
+                           </div>
+                       </div>
+                   </div>
+                   <!-- ============================================================== -->
+                   <!-- End PAge Content -->
+                   <!-- ============================================================== -->
+                   <!-- ============================================================== -->
+                   <!-- Right sidebar -->
+                   <!-- ============================================================== -->
+                   <!-- .right-sidebar -->
+                   <!-- ============================================================== -->
+                   <!-- End Right sidebar -->
+                   <!-- ============================================================== -->
+               </div>
+               <!-- ============================================================== -->
+               <!-- End Container fluid  -->
+               <!-- ============================================================== -->
+               <!-- ============================================================== -->
+               <!-- footer -->
+               <!-- ============================================================== -->
+               <footer class="footer text-center">
+                   All Rights Reserved by 版权所有&copy;2021-2050
+               </footer>
+               <!-- ============================================================== -->
+               <!-- End footer -->
+               <!-- ============================================================== -->
+           </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+<!-- All Jquery -->
+		 <!-- ============================================================== -->
+		 <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+		 <!-- Bootstrap tether Core JavaScript -->
+		 
+		 <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+		 <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
+		 <!--Wave Effects -->
+		 <script src="../dist/js/waves.js"></script>
+		 <!--Menu sidebar -->
+		 <script src="../dist/js/sidebarmenu.js"></script>
+		 <!--Custom JavaScript -->
+		 <script src="../dist/js/custom.min.js"></script>
+		 <!-- datepicker javascript -->
+		<script src="../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+		<!-- editor javascript -->
+		<script src="../assets/libs/quill/dist/quill.min.js"></script>
+    <script>
+
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+		
+		// 解决文件域不显示上传文件名称的
+		function showFilename(file){
+		    $("#filename_label").html(file.name);
+		}
+	
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.as.ssm.dao.DepartInfoMapper" >
+
+<select id="select" resultType="com.as.ssm.domain.DepartInfo">
+	select * from departinfo
+	<include refid="where_sql"></include>
+	<if test="skip>=0">
+		limit #{skip},#{take}
+	</if>
+
+</select>
+
+<select id="getRowCount" resultType="int">
+	select count(*) from departinfo
+<!-- 	引用sql片断  -->
+	<include refid="where_sql"></include>
+</select>
+
+<!-- sql片断 -->
+<sql id="where_sql">
+	<where>
+		<if test="departInfo.departname!=null and departInfo.departname!=''">
+			and departname like concat('%',#{departInfo.departname},'%')
+		</if>
+		<if test="departInfo.departtel!=null and departInfo.departtel!=''">
+			and departtel like concat('%',#{departInfo.departtel},'%')
+		</if>
+	</where>
+</sql>
+
+<delete id="deleteByIds">
+	delete from departinfo where departid in
+<!-- 	(100,200,300,400) -->
+	<foreach collection="array" item="id" open="(" close=")" separator=",">
+		#{id}
+	</foreach>
+</delete>
+
+<delete id="deleteById">
+	delete from departinfo where departid=#{departid}
+</delete>
+
+<insert id="insert">
+	insert into departinfo
+	(
+		departname,
+		departemail,
+		departtel,
+		departdesc
+	)
+	values
+	(
+		#{departname},
+		#{departemail},
+		#{departtel},
+		#{departdesc}
+	)
+</insert>
+
+<update id="updateById">
+	update departinfo set departname=#{departname},departemail=#{departemail},departtel=#{departtel},departdesc=#{departdesc} where departid=#{departid}
+</update>
+
+<select id="selectById" resultType="com.as.ssm.domain.DepartInfo">
+	select * from departinfo where departid=#{departid}
+</select>
+
+
+</mapper>

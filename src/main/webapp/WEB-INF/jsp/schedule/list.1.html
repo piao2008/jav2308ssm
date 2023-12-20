@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <!-- Tell the browser to be responsive to screen width -->
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name="description" content="">
+       <meta name="author" content="">
+       <title>顺顺顺顺系统</title>
+       <!-- Custom CSS -->
+		<link rel="stylesheet" type="text/css" href="../assets/libs/quill/dist/quill.snow.css">
+		<link rel="stylesheet" type="text/css" href="../assets/libs/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../dist/bootstrap-icons.css"/>
+		<link rel="stylesheet" type="text/css" href="../dist/css/multicheck.css">
+		<link href="../dist/css/style.min.css" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="../assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
+		<link href="../assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
+		<link href="../dist/css/style.min.css" rel="stylesheet">
+		<style type="text/css">
+			.row1{border: 1px blue solid;}
+
+		</style>
+       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+       <!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+   </head>
+	<body>
+		<div id="main-wrapper">
+		        <!-- ============================================================== -->
+		        <!-- Topbar header - style you can find in pages.scss -->
+			<header class="topbar" data-navbarbg="skin5">
+				<nav class="navbar top-navbar navbar-expand-md navbar-dark">
+					<div class="navbar-header" data-logobg="skin5">
+						<!-- This is for the sidebar toggle which is visible on mobile only -->
+						<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+						<!-- ============================================================== -->
+						<!-- Logo -->
+						<!-- ============================================================== -->
+						<a class="navbar-brand" href="/hotel/schedule/list">
+							<!-- Logo icon -->
+							<b class="logo-icon p-l-10">
+								<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+								<!-- Dark Logo icon -->
+								<img src="../assets/images/asjy.jpg" style="width: 1.875rem;height: 1.4375rem;" alt="homepage" class="light-logo" />
+
+							</b>
+							<!--End Logo icon -->
+							<!-- Logo text -->
+							<span class="logo-text">
+		                             <!-- dark Logo text -->
+		                             	宙斯-OA办公自动化系统
+		                        </span>
+							<!-- Logo icon -->
+							<!--End Logo icon -->
+						</a>
+						<!-- ============================================================== -->
+						<!-- End Logo -->
+						<!-- ============================================================== -->
+						<!-- ============================================================== -->
+						<!-- Toggle which is visible on mobile only -->
+						<!-- ============================================================== -->
+						<a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
+					</div>
+					<!-- ============================================================== -->
+					<!-- End Logo -->
+					<!-- ============================================================== -->
+					<div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+						<!-- ============================================================== -->
+						<!-- toggle and nav items显示或隐藏 -->
+						<!-- ============================================================== -->
+						<ul class="navbar-nav float-left mr-auto">
+							<li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
+							<li class="nav-item search-box">
+								<a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="bi bi-person-dash"></i>欢迎XX登录</a>
+
+							</li>
+						</ul>
+						<!-- ============================================================== -->
+						<!-- Right side toggle and nav items -->
+						<!-- ============================================================== -->
+						<ul class="navbar-nav float-right">
+							<!-- ============================================================== -->
+							<!-- User profile and search -->
+							<!-- ============================================================== -->
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+								<div class="dropdown-menu dropdown-menu-right user-dd animated">
+									<a class="dropdown-item" href="/hotel/employee/center?"><i class="ti-user m-r-5 m-l-5"></i>个人中心</a>
+									<a class="dropdown-item" href="/hotel/employee/updatePassword"><i class="ti-settings m-r-5 m-l-5"></i>修改密码</a>
+									<div class="dropdown-divider"></div>
+									<%-- 		                                <a class="dropdown-item" href="/hotel/employee/updateState"><i class="ti-wallet m-r-5 m-l-5"></i>账户设置</a> --%>
+									<a name="exits" class="dropdown-item" href="/hotel/employee/exit"><i class="fa fa-power-off m-r-5 m-l-5"></i>安全退出</a>
+									<div class="dropdown-divider"></div>
+
+								</div>
+							</li>
+							<!-- ============================================================== -->
+							<!-- User profile and search -->
+							<!-- ============================================================== -->
+						</ul>
+					</div>
+				</nav>
+			</header>
+		        <!-- ============================================================== -->
+		        <!-- End Topbar header -->
+		        <!-- ============================================================== -->
+		        <!-- ============================================================== -->
+		        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+				<aside class="left-sidebar" data-sidebarbg="skin5">
+				<!-- Sidebar scroll-->
+				<div class="scroll-sidebar">
+					<!-- Sidebar navigation-->
+					<nav class="sidebar-nav">
+						<ul id="sidebarnav" class="p-t-30">
+							<!--用户管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-person-lines-fill"></i><span class="hide-menu">用户管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-file-earmark-richtext"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-file-earmark-richtext"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+							<!--员工管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-person-square"></i><span class="hide-menu">员工管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-file-earmark-richtext"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-file-earmark-richtext"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+							<!--部门管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-house-fill"></i><span class="hide-menu">部门管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-diamond-half"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-diamond-half"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+							<!--新闻管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-newspaper"></i><span class="hide-menu">新闻管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+
+							<!--通讯录管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-telephone-fill"></i><span class="hide-menu">通讯录管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+							<!--申请管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi-calendar-check-fill"></i><span class="hide-menu">申请管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+							<!--消息管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-broadcast-pin"></i><span class="hide-menu">消息管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+							<!--考勤管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-person-circle"></i><span class="hide-menu">考勤管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+							<!--文件上传管理-->
+
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-file-earmark-bar-graph-fill"></i><span class="hide-menu">文件管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+
+							<!--权限管理-->
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="bi bi-power"></i><span class="hide-menu">权限管理</span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="insertUser.html" class="sidebar-link"><i class="bi bi-person-plus-fill"></i><span class="hide-menu">用户添加</span></a></li>
+									<li class="sidebar-item"><a href="userManager.html" class="sidebar-link"><i class="bi bi-person-fill"></i><span class="hide-menu">用户管理</span></a></li>
+								</ul>
+							</li>
+
+							<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-light" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">系统管理 </span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									<li class="sidebar-item"><a href="icon-material.html" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> 权限管理 </span></a></li>
+									<li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu">安全退出</span></a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+					<!-- End Sidebar navigation -->
+				</div>
+				<!-- End Sidebar scroll-->
+			</aside>
+		        <!-- ============================================================== -->
+		       <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Page wrapper  -->
+			<!-- ============================================================== -->
+			<div class="page-wrapper">
+				<!-- ============================================================== -->
+				<!-- Bread crumb and right sidebar toggle -->
+				<!-- ============================================================== -->
+				<div class="page-breadcrumb">
+					<div class="row">
+						<div class="col-12 d-flex no-block align-items-center">
+							<h4 class="page-title">日程界面</h4>
+							<div class="ml-auto text-right">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="#">Home</a></li>
+										<li class="breadcrumb-item active" aria-current="page">Library</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Bread crumb and right sidebar toggle -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- Container fluid  -->
+				<!-- ============================================================== -->
+				<div class="container-fluid">
+					<!-- ============================================================== -->
+					<!-- Start Calender  -->
+					<!-- ============================================================== -->
+					<div class="row">
+
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-body">
+									<!-- <h5 class="card-title m-b-0">Static Table With Checkboxes</h5> -->
+									<!-- ==============================================================-->
+									<!-- Start Search Content -->
+									<!-- ==============================================================-->
+									<div class="form-row" style="margin: 0.3125rem 0;">
+										<form class="form-inline navbar-form navbar-left" method="post" action="schedule/list">
+											<!-- 搜索框 -->
+											<div class="input-group" style="margin-right: 0.3125rem;">
+												<input type="text" id="title" name="title" class="form-control" placeholder="请输入标题查询" >
+											</div>
+											<!-- 下拉列表搜索 -->
+											<div class="input-group" style="margin-right: 0.3125rem;">
+												<select class="form-control" id="state"  name="state" >
+													<option value="0">==选择状态==</option>
+													<option value="1">未完成</option>
+													<option value="2">完成</option>
+													<option value="3">进行中</option>
+												</select>
+											</div>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<!-- 搜索框 -->
+											<div class="input-group" style="margin-right: 0.3125rem;">
+												<span style="margin-top: 10px">日程时间 : </span>&nbsp;
+												<input type="date" id="begintime" name="begintime"  class="form-control" >
+											</div>
+											<div class="input-group" style="margin-right: 0.3125rem;">
+												<span style="margin-top: 10px"> 至 </span>&nbsp;
+												<input type="date" id="endtime" name="endtime"  class="form-control" >
+											</div>
+											&nbsp;&nbsp;
+											<input id="empid" type="hidden" value="${emp.empId }">
+											<!-- 隐藏控件存放项目名 -->
+											<input type="hidden" value="oa" id="projectName">
+											<!-- 按钮和超链接 -->
+											<div class="input-group" style="margin-right: 0.3125rem;">
+						   	<span class="input-group-btn">
+								<button type="button" onclick="init()" class="btn btn-success">查询</button>
+							</span>
+												<span class="input-group-btn">
+								<a href="schedule/append" class="btn btn-primary" style="margin-left: 5px;">添加</a>
+							</span>
+											</div>
+										</form>
+									</div>
+									<!-- ==============================================================-->
+									<!-- end Search Content -->
+									<!-- ==============================================================-->
+
+								</div>
+
+
+								<!-- ============================================================== -->
+								<!-- end Tables Content -->
+								<!-- ============================================================== -->
+							</div>
+						</div>
+
+						<div class="card">
+							<!-- <h5 class="card-title">Calender日历</h5> -->
+							<div class="card-header">
+								<div class="row">
+									<div class="col-2" style="height: 30px;line-height: 30px; text-align: center;">个人日程</div>
+									<div class="col-1" style="height: 30px; background: red; line-height: 30px; text-align: center;">私有</div>
+									<div class="col-1" style="height: 30px; background: yellow; text-align: center;line-height: 30px;">公有</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="card-body b-l calender-sidebar">
+									<div id="calendar"></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+
+				<!-- ============================================================== -->
+				<!-- end Calender -->
+				<!-- ============================================================== -->
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Page wrapper  -->
+			<!-- ============================================================== -->
+		</div>
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+		<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+		<!-- Bootstrap tether Core JavaScript -->
+		<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+		<!--Wave Effects -->
+		<script src="../dist/js/waves.js"></script>
+		<!--Menu sidebar -->
+		<script src="../dist/js/sidebarmenu.js"></script>
+		<!--Custom JavaScript -->
+		<script src="../dist/js/custom.min.js"></script>
+		<!-- editor javascript -->
+		<script src="../assets/libs/quill/dist/quill.min.js"></script>
+
+		<!-- this calendar js -->
+		<script src="../assets/libs/moment/min/moment.min.js"></script>
+		<script src="../assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+		<!-- <script src="./dist/js/pages/calendar/cal-init.js"></script> -->
+		<script src="../assets/libs/fullcalendar/dist/locale/zh-cn.js"></script>
+
+		<script type="text/javascript">
+			//日期天加1天
+			function formatAddDate(timestamp) {
+
+				var correctend = new Date(timestamp);
+				var year1 = correctend.getFullYear();
+				var month1 = correctend.getMonth() + 1; //0-11
+				var day1 = correctend.getDate();
+				if (month1 == 1 || month1 == 3 || month1 == 5 || month1 == 7 || month1 == 8 || month1 == 10 || month1 == 12) {
+					if (day1 != '31') {
+						day1 = day1 + 1
+					}
+					if (month1 == 12 && day1 == 31) {
+						year1 = year1 + 1
+						day1 = '1'
+						month1 = '1'
+					}
+
+					if (day1 == '31') {
+						day1 = '1'
+						month1 = month1 + 1
+					}
+
+
+
+				}
+				if (month1 == 4 || month1 == 6 || month1 == 9 || month1 == 11) {
+					if (day1 != '30') {
+						day1 = day1 + 1
+					} else if (day1 == '30') {
+						day1 = '1'
+						month1 = month1 + 1
+					}
+
+				}
+				// 若某个年份能被4整除但不能被100整除,则是闰年。
+				// (2)若某个年份能被400整除,则也是闰年
+				if ((year1 % 4 == 0 && year1 % 100 != 0) || (year1 % 400 == 0)) {
+					if (month1 == 2) {
+						if (day1 != '29') {
+							day1 = day1 + 1
+						} else if (day1 == '29') {
+							day1 = '1'
+							month1 = month1 + 1
+						}
+
+					}
+				} else {
+					if (month1 == 2) {
+						if (day1 != '28') {
+							day1 = day1 + 1
+						} else if (day1 == '28') {
+							day1 = '1'
+							month1 = month1 + 1
+						}
+
+					}
+				}
+
+				if (month1 < 10) {
+					month1 = "0" + month1;
+				}
+				if (day1 < 10) {
+					day1 = "0" + day1;
+				}
+
+				return year1 + "-" + month1 + "-" + day1;
+			}
+
+
+
+			$(document).ready(function() {
+				var cal = $('#calendar').fullCalendar({
+					//日历头部左边：初始化切换按钮
+					header: {
+
+						left: '',
+						//日历头部中间：显示当前日期信息
+						center: 'title',
+						//日历头部右边：初始化视图
+						right: 'prev,next today'
+					},
+					editable: true,
+					//设置是否可被单击
+					selectable: false,
+					//设置是否显示周六和周日，设为false则不显示
+					weekends: true,
+					drop: //拖拽
+							function(date) {
+								$this.onDrop($(this), date);
+								alert("drop")
+							},
+					dayClick: ///点击日历每天时的点击事件
+							function(date, allDay, jsEvent, view) {
+								alert(date)
+								//var date1=new Date(date)
+								//var date2=date1.Format("yyyy-MM-dd");
+								//location.href="http://www.baidu.com?id="+date2;
+
+							},
+					eventClick: //当点击日历中的某一日程
+							function(date, allDay, jsEvent, view) {
+								console.log(date); //calEvent是日程（事件）对象
+								console.log(view)
+								console.log(date.title)
+								console.log(date.id)
+								alert(date.title)
+							},
+					events: //日程数据
+							function(start, end, timezone, callback) {
+								//var events=new Array();
+								var events = [];
+
+								// var date = new Date();
+								// var nowDate = date.Format("yyyyMMdd");
+								// var nowTime = date.Format("hhmmss");
+								events = [{
+									id: 9,
+									title: '@销售部-李强\t\nBirthday\t\n Party',
+									start: '2023-08-07',
+									end: formatAddDate('2023-08-15'),
+									color: 'green',
+									url: 'http://localhost:8080/employee/list?id=1'
+								}];
+								//数组中添加一个单元
+								events.push({
+
+									id: 91,
+									title: '@Birthday\r\n Party',
+									start: '2023-07-07',
+									end: formatAddDate('2023-07-10'),
+									color: 'red',
+									url: 'http://localhost:8080/employee/list?id=1'
+
+
+								});
+
+								callback(events)
+							}
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.as.ssm.dao.FileInfoMapper">
+
+    <insert id="insert">
+        insert into  fileinfo
+            (filename,fileurl,filedesc,empid,count,filesize)
+        values(#{filename},#{fileurl},#{filedesc},#{empid},0,#{filesize});
+    </insert>
+
+    <update id="updateById">
+        update fileinfo set
+
+         filename=#{filename},
+         <if test="fileurl!=null and fileurl!=''">
+             fileurl=#{fileurl},
+         </if>
+         filedesc=#{filedesc},
+         empid=#{empid},
+         filesize=#{filesize}
+        where fileid =#{fileid}
+    </update>
+
+    <update id="updateCount">
+        update fileinfo set count=count+1 where fileid=#{fileid}
+    </update>
+
+    <delete id="deleteById">
+        delete from fileinfo where fileid=#{fileid}
+    </delete>
+
+    <delete id="deleteByIds">
+        delete from fileinfo where fileid in
+             <foreach collection="array" item="fileid" open="(" close=")" separator=",">
+                 #{fileid}
+             </foreach>
+    </delete>
+
+    <select id="selectById" resultType="com.as.ssm.domain.FileInfo">
+        select * from fileinfo where fileid=#{fileid}
+    </select>
+    <select id="select" resultType="com.as.ssm.domain.FileInfo">
+        select * from viewfileinfo
+        <include refid="where_sql"></include>
+        order by posttime desc
+        limit #{skip},#{take}
+    </select>
+
+    <sql id="where_sql">
+        <where>
+            <if test="fileInfo.filename!=null and fileInfo.filename!=''">
+                and filename like concat('%',#{fileInfo.filename},'%')
+            </if>
+            <if test="fileInfo.empname!=null and fileInfo.empname!=''">
+                and empname like concat('%',#{fileInfo.empname},'%')
+            </if>
+            <if test="fileInfo.departid!=null and fileInfo.departid!=-1">
+                and departid=#{fileInfo.departid}
+            </if>
+        </where>
+    </sql>
+    <select id="getRowCount" resultType="int">
+        select count(*) from viewfileinfo
+        <include refid="where_sql"></include>
+    </select>
+
+
+    <select id="selectByFileIds" resultType="com.as.ssm.domain.FileInfo">
+        select * from fileinfo where fileid in
+        <foreach collection="array" item="fileid" open="(" close=")" separator=",">
+            #{fileid}
+        </foreach>
+    </select>
+</mapper>
