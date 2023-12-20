@@ -16,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class TestController {
 
 
+    public void test01(){
+        System.out.println("ok");
+    }
     //ajax
     @ResponseBody
     @RequestMapping("/test")
