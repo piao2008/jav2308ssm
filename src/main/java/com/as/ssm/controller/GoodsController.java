@@ -10,5 +10,8 @@ public class GoodsController {
     public  void testGoods()
     {
         System.out.println("goods....");
+        System.out.println("goods2....");
+        System.out.println("goods3....");
+        System.out.println("goods4....");
     }
 }
