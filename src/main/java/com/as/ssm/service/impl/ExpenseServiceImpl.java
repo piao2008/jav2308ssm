@@ -12,6 +12,9 @@ import com.as.ssm.util.Common;
 import com.as.ssm.util.Pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
@@ -104,6 +107,10 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 
 
+
+    //事务注解
+
+    @Transactional()
     @Override
     public void modifyById(Expense expense, Integer[] extypeids, Integer[] moneys, String[] costdescs) {
 //        #修改
