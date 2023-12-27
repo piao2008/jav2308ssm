@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.as.ssm.dao.RoleMapper">
+
+    <select id="select" resultType="com.as.ssm.domain.Role">
+        select * from role
+    </select>
+
+    <delete id="deleteById">
+        delete from role where roleid=#{roleid}
+    </delete>
+
+    <insert id="insert">
+        insert into role(rolename,roledesc)  values(#{rolename},#{roledesc})
+    </insert>
+
+
+   <update id="updateById">
+       update role set rolename=#{rolename},roledesc=#{roledesc} where roleid=#{roleid}
+   </update>
+
+    <select id="selectById" resultType="com.as.ssm.domain.Role">
+
+    select * from  where roleid=#{roleid}
+    </select>
+</mapper>

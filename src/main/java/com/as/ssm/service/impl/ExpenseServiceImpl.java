@@ -139,8 +139,6 @@ public class ExpenseServiceImpl implements ExpenseService {
             list.add(detail);
         }
         this.expenseDetailMapper.inserts(list);
-
-
     }
 
     @Override

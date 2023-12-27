@@ -5,8 +5,13 @@
 
 <!--    递归调用:方法自已调用自已-->
     <select id="selectByParentId" resultMap="map1">
-        select a.*,b.empid from  menu a,usersmenu b
-        where a.menuid=b.menuid and b.empid=#{mid} and parentid=#{parentid}
+        <!--select a.*,b.empid from  menu a,usersmenu b
+        where a.menuid=b.menuid and b.empid=#{mid} and parentid=#{parentid}-->
+        select DISTINCT a.*,c.empid from menu a, rolepermission b,userrole c
+        where a.menuid=b.menuid and c.roleid=b.roleid
+        and  c.empid=#{mid} and parentid=#{parentid}
+        and a.ismenu=1
+        order by sort asc
     </select>
     <resultMap id="map1" type="com.as.ssm.domain.Menu">
         <id property="menuid" column="menuid"/>
@@ -15,6 +20,8 @@
         <result property="parentid" column="parentid"/>
         <result property="ico" column="ico"/>
         <result property="empid" column="empid"/>
+        <result property="isMenu" column="ismenu"/>
+        <result property="sort" column="sort"/>
         <!--多参数 格式{参数名1=列1,参数名2=列2,...}-->
         <collection property="list" ofType="com.as.ssm.domain.Menu" column="{mid=empid,parentid=menuid}" select="selectByParentId"></collection>
     </resultMap>
@@ -32,6 +39,8 @@
         <result property="url" column="url"/>
         <result property="parentid" column="parentid"/>
         <result property="ico" column="ico"/>
+        <result property="isMenu" column="ismenu"/>
+        <result property="sort" column="sort"/>
         <collection property="list" ofType="com.as.ssm.domain.Menu" column="menuid"  select="select"></collection>
     </resultMap>
 

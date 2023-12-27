@@ -9,6 +9,11 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * a定义切面类
@@ -31,6 +36,7 @@ public class DemoAop3 {
 	
 
 
+
 	
 	//环绕增强:在方法执行前和执行后都要执行.
 	//环绕增强方法的返回值,就是目标对象方法的返回值.
@@ -38,6 +44,15 @@ public class DemoAop3 {
 	@Around("aspcut()")
 	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 		System.out.println("环绕增强--执行前");
+		//得到request对象
+		ServletRequestAttributes attributes=(ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		//响应对象
+		HttpServletResponse response=attributes.getResponse();
+		//请求对象
+		HttpServletRequest request=attributes.getRequest();
+		//输出请求地址
+		System.out.println(request.getRequestURL());
+
 		//毫秒
 		long begin=System.currentTimeMillis();
 		//操作日志
