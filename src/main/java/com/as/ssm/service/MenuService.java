@@ -28,5 +28,7 @@ public interface MenuService {
      */
     public List<Menu> list(Integer parentId);
 
+    public List<Menu> getByEmpId(Integer empId);
+
 
 }

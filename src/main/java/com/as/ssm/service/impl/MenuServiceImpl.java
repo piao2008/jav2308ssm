@@ -34,4 +34,9 @@ public class MenuServiceImpl implements MenuService {
     public List<Menu> list(Integer parentId) {
         return this.menuMapper.select(parentId);
     }
+
+    @Override
+    public List<Menu> getByEmpId(Integer empId) {
+        return this.menuMapper.selectByEmpId(empId);
+    }
 }

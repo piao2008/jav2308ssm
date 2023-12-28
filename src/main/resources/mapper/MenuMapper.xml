@@ -45,4 +45,9 @@
     </resultMap>
 
 
+    <select id="selectByEmpId" resultType="com.as.ssm.domain.Menu">
+        select DISTINCT  menuname,url  from menu a,rolepermission b,userrole c
+        where a.menuid=b.menuid and c.roleid=b.roleid
+          and c.empid=#{empid}
+    </select>
 </mapper>

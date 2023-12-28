@@ -29,4 +29,11 @@ public interface MenuMapper {
      * @return
      */
     public List<Menu> select(Integer parentid);
+
+    /**
+     * 查询当前登录用户的所有菜单,用于权限判断
+     * @param empId
+     * @return
+     */
+    public List<Menu> selectByEmpId(Integer empId);
 }

@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Administrator
  *
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class DemoAop3 {
 
 	//定义切点
