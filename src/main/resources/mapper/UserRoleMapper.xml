@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.as.ssm.dao.UserRoleMapper">
+
+    <select id="selectByEmpid" resultType="com.as.ssm.domain.UserRole">
+        select *  from userrole where empid=#{empid}
+    </select>
+
+
+<!--    #给用户分配多角色-->
+<!--    #删除当前要分配角色用户对应角色-->
+<!--    delete from userrole where empid=0-->
+<!--    #批量添加-->
+<!--    insert into userrole(empid,roleid) values(),()-->
+<!--    -->
+
+    <delete id="deleteByEmpId">
+        delete from userrole where empid=#{empid}
+    </delete>
+
+    <insert id="inserts">
+        insert into userrole(empid,roleid) values
+        <foreach collection="list" item="user" separator=",">
+            (#{user.empid},#{user.roleid})
+        </foreach>
+    </insert>
+</mapper>

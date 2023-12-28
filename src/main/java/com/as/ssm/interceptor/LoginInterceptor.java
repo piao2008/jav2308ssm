@@ -30,6 +30,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         else
         {
+            //
+            String url=request.getRequestURI();
+            System.out.println("用户请求的地址:"+url);
+            //
             return true;//放行
         }
 

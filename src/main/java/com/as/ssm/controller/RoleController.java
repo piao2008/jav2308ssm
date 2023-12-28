@@ -1,17 +1,15 @@
 package com.as.ssm.controller;
 
-import com.as.ssm.domain.Menu;
-import com.as.ssm.domain.Role;
-import com.as.ssm.domain.RolePermission;
-import com.as.ssm.domain.UsersMenu;
-import com.as.ssm.service.MenuService;
-import com.as.ssm.service.RolePermissionService;
-import com.as.ssm.service.RoleService;
+import com.as.ssm.domain.*;
+import com.as.ssm.service.*;
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -28,7 +26,18 @@ public class RoleController {
     private MenuService menuService;
 
     @Autowired
+    private EmployeeSerivce employeeSerivce;
+
+    @Autowired
+    private DepartInfoService departInfoService;
+
+    @Autowired
     private RolePermissionService rolePermissionService;
+    @Autowired
+    private  PosService posService;
+    @Autowired
+    private  UserRoleService userRoleService;
+
 
     @GetMapping("/list")
     public ModelAndView list()
@@ -117,6 +126,52 @@ public class RoleController {
     {
         ModelAndView mv=new ModelAndView("redirect:/role/power");
         this.rolePermissionService.modifyByRolId(menuids, roleId);
+        return  mv;
+    }
+
+
+    //下面是完成给用户分配角色
+    @RequestMapping("/userrolelist")
+    public ModelAndView UserROleList(@RequestParam(value = "currPage",required = true,defaultValue = "1") Integer currPage, Employee employee, HttpServletRequest request)
+    {
+
+        //往后改成拦截器实现:功能
+        ModelAndView mv =null;
+        //得到session
+        HttpSession session=request.getSession();
+
+        mv = new ModelAndView("userrole/list");
+        mv.addObject("pages", this.employeeSerivce.list(currPage, employee));
+        if (employee.getState() == null) employee.setState(-1);
+        mv.addObject("employee", employee);
+        mv.addObject("listDepart", this.departInfoService.list(-1, new DepartInfo()).getList());
+        mv.addObject("listPos", this.posService.list());
+        return mv;
+    }
+
+    @GetMapping("/rolelist")
+    public ModelAndView roleList(Integer empId)
+    {
+        ModelAndView mv=new ModelAndView("userrole/rolelist");
+        mv.addObject("rolelist", this.roleService.list());
+        mv.addObject("empId", empId);
+        return  mv;
+    }
+
+    //ajax
+    //当前用户实现默认选中
+    @GetMapping("/getbyempid")
+    @ResponseBody
+    public  List<UserRole> getByEmpId(Integer empId)
+    {
+        return  this.userRoleService.getByEmpid(empId);
+    }
+    //分配用户的角色
+    @GetMapping("/save")
+    public  ModelAndView save(Integer[] roleIds,Integer empId)
+    {
+        ModelAndView mv=new ModelAndView("redirect:/role/userrolelist");
+        this.userRoleService.append(roleIds, empId);
         return  mv;
     }
 }
